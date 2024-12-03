@@ -7,24 +7,7 @@ The goal is to create a simple web application that allows users to search for a
 const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('search');
 // since the API needs a artist ID, we need to get it from the search results
-let apiVariables =
-    { 
-        "searchTerm": "placeholder", 
-        "offset": 0, 
-        "limit": 10, 
-        "numberOfTopResults": 5, 
-        "includeAudiobooks": true, 
-        "includeArtistHasConcertsField": false, 
-        "includePreReleases": true, 
-        "includeLocalConcertsField": false 
-    }
-let extensions =
-    {
-        "persistedQuery":{
-            "version":1,
-            "sha256Hash":"f1f1c151cd392433ef4d2683a10deb9adeefd660f29692d8539ce450d2dfdb96"
-        }
-    } 
+
 // First we need to get the access token from the Spotify API
 let accessToken = '';
 const clientId = '72fe3696461e4ed9ae6446576f34f8d8';
@@ -47,15 +30,16 @@ const requestOptions = {
     redirect: "follow"
 };
 
-fetch("https://accounts.spotify.com/api/token", requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-        // here we have the access token, and we can use it to make requests to the Spotify API
-        console.log(result)
-        accessToken = result.access_token;
-        console.log(accessToken)
-    })
-    .catch((error) => console.error(error));
+
+// fetch("https://accounts.spotify.com/api/token", requestOptions)
+//     .then((response) => response.json())
+//     .then((result) => {
+//         // here we have the access token, and we can use it to make requests to the Spotify API
+//         console.log(result)
+//         accessToken = result.access_token;
+//         console.log(accessToken)
+//     })
+//     .catch((error) => console.error(error));
 
 // 
 
@@ -91,3 +75,22 @@ function searchArtist() {
         .catch((error) => console.error(error));
 }
 
+function getArtistId(artist){
+    apiVariables.searchTerm = artist;
+    let searcVariables = URLSearchParams(apiVariables).toString();
+    let searchExtension = URLSearchParams(extensions).toString();
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("authorization", "Bearer BQAMZzMzXCbbjSnNUNZKcggYoLqU5AnsRqF7mNhiwQC7vgsuH8Q-RYuwftOIsXIFvzv0xpEDw0Px8hllLIuXOqUGxNPy0Fi2QeRjbzFVX-bUGPUwFtJHQSslx2BcA8eCQDA_Cg__fL3C8tMhV9yVjxdwK7LqXYn43p4Ln2-9Tpt6SxO0V_sPS5wZ00pKIajp-0Wd3q5oRcovyphOvmLcDx6bigJoZodDuclfVdI6_q5jvbzUcj7PdNncbOOOej-P8plvJb_8KncvCom3HxwfkJO4k8G392tmCR0RCjxISZYLyEWw6AdAd55Ld8ihrWVH3lYCchZDbZn5BQQoxhZNn9y6gQ_A-w");
+    myHeaders.append("client-token", "AADHS77yZ+w1xC/TKgsrhXUSAzopgVePmuEI/VKvXO1uK8JgMaNBmxRzSz542yW9wQBOx/SJCg/Ff6fIxvUDOC7oJXf1vG6qJ4Y+sJCf3X80TCaUH9PbGiqPgpT731G0OCan6UCiIMbHMWsUuKWKGrQG76gMVJ6xcfkKUcmGR4rpv4vkHaPJA+oFTjim/4MW0A7Z3IsT0/6+wnBcvtX7/4JY24y5fCxEqJlNh1bVfMR8LZR2UW59uWRPxhUS3vOSGMn2v5AHjI1oZV5lnaR5Dzkz2ADNNuhNRnAZywaROg==");
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+      };
+      
+      fetch(`https://api-partner.spotify.com/pathfinder/v1/query?operationName=searchDesktop&variables=${searcVariables}&extensions=${searchExtension}`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
+}
