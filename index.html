@@ -3,47 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemo API</title>
+    <title>Spotify API</title>
     <link rel="stylesheet" href="css/normalize.css"/>
-    <link rel="stylesheet" href="css/pokestyle.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="js/index.js" defer></script>
 </head>
 <body>
-    <h1>Pokemon API </h1>
+    <h1>Spotify API</h1>
     <div class="container">
         <div class="search">
-            <input type="text" id="search" placeholder="Search Pokemon"/>
+            <input type="text" id="search" placeholder="Search for an artist"/>
+            <button id="search-button">Search</button>
         </div>
-        <div class="cards" id="cards">
-            <div class="card">
-                <div class="card-image
-                ">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="pokemon"/>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title
-                    ">Bulbasaur</h3>
-                    <p class="card-subtitle">Grass</p>
-                </div>
-            </div>
+        <div class="results">
+            <h2>Results</h2>
+            <ul id="results"></ul>
         </div>
-    </div>
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close" id="close">&times;</span>
-            <div class="modal-image">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="pokemon"/>
-            </div>
-            <div class="modal-info">
-                <h2 class="modal-title">Bulbasaur</h2>
-                <p class="modal-subtitle">Grass</p>
-                <p class="modal-text
-                ">Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.</p>
-            </div>
+        <div class="albums">
+            <h2>Albums</h2>
+            <ul id="albums"></ul>
         </div>
-    </div>
-
-    
+        <div class="tracks">
+            <h2>Tracks</h2>
+            <ul id="tracks"></ul>
+        </div>
+    </div>   
     
 </body>
 </html>
