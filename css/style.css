@@ -8,50 +8,42 @@ body {
   
   h2 {
     font-size: 20px;
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   
-  article p {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  
-  article p:nth-of-type(2) {
-    font-size: 14px;
-    line-height: 2;
-  }
-  
-  nav {
-    margin-bottom: 50px;
-  }
-  
-  .prev {
-    float: left;
-  }
-  
-  .next {
-    float: right;
-  }
-  
-  article {
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #ddd;
-    border: 1px solid #ccc;
-  }
-  
-  img {
-    float: right;
-    margin-left: 20px;
-    max-width: 200px;
-  }
-  
-  .clearfix {
-    clear: both;
-  }
-  
-  span {
-    background-color: #ccc;
-    padding: 5px;
-    margin: 5px;
-  }
-  
+.results, .genres, .followers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#results{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+select {
+  padding: 5px;
+  margin: 5px;;
+}

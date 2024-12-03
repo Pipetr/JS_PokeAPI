@@ -61,7 +61,6 @@ fetch("https://accounts.spotify.com/api/token", requestOptions)
     .then((result) => {
         // here we have the access token, and we can use it to make requests to the Spotify API
         accessToken = result.access_token;
-        console.log(accessToken)
     })
     .catch((error) => console.error(error));
 
@@ -109,43 +108,3 @@ function showArtistInfo(artitstInfo) {
 
 // Add an event listener to the select list
 selecList.addEventListener('change', callTheSpotifyAPI);
-
-
-/*
-{
-    "external_urls": {
-        "spotify": "https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s"
-    },
-    "followers": {
-        "href": null,
-        "total": 79097768
-    },
-    "genres": [
-        "canadian pop",
-        "pop"
-    ],
-    "href": "https://api.spotify.com/v1/artists/1uNFoZAHBGtllmzznpCI3s",
-    "id": "1uNFoZAHBGtllmzznpCI3s",
-    "images": [
-        {
-            "url": "https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36",
-            "height": 640,
-            "width": 640
-        },
-        {
-            "url": "https://i.scdn.co/image/ab676161000051748ae7f2aaa9817a704a87ea36",
-            "height": 320,
-            "width": 320
-        },
-        {
-            "url": "https://i.scdn.co/image/ab6761610000f1788ae7f2aaa9817a704a87ea36",
-            "height": 160,
-            "width": 160
-        }
-    ],
-    "name": "Justin Bieber",
-    "popularity": 92,
-    "type": "artist",
-    "uri": "spotify:artist:1uNFoZAHBGtllmzznpCI3s"
-}
-*/
