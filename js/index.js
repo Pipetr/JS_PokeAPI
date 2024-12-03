@@ -95,12 +95,14 @@ function showArtistInfo(artitstInfo) {
         let img = document.createElement('img');
         img.src = artitstInfo.images[2].url;
         results.appendChild(img);
+        genres.innerHTML = '';
         artitstInfo.genres.forEach(genre => {
             let p = document.createElement('p');
             p.textContent = genre;
             genres.appendChild(p);
         }
         );
+        followers.innerHTML = '';
         followers.textContent = artitstInfo.followers.total;
         
     }
