@@ -8,6 +8,9 @@ let selecList = document.getElementById('artists');
 let accessToken = '';
 const clientId = '72fe3696461e4ed9ae6446576f34f8d8';
 const clientSecret = '96ec0d1017024a3bbad077176b284cab';
+const results = document.getElementById('results');
+const albums = document.getElementById('genres');
+const tracks = document.getElementById('followers');
 // since the API needs a artist ID, we need to get it from the search results
 let artists = {
     "Pitbull": "0TnOYISbd1XYRBk9myaseg",
@@ -95,8 +98,58 @@ function searchArtist() {
     // Defining the artist ID
     const artistId = artists[artist];
     // Define the headers for the API request
-    callTheSpotifyAPI(artistId);
+    let artitstInfo = callTheSpotifyAPI(artistId);
+    if(artitstInfo.error) {
+        alert('The artist was not found, please select a valid option');
+    }else {
+        // Display the artist information on the screen
+        results.textContent = artitstInfo.name;
+        let img = document.createElement('img');
+        img.src = artitstInfo.images[2].url;
+        results.appendChild(img);
+
+    }
 }
 
 // Add an event listener to the select list
 selecList.addEventListener('change', searchArtist);
+
+
+/*
+{
+    "external_urls": {
+        "spotify": "https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s"
+    },
+    "followers": {
+        "href": null,
+        "total": 79097768
+    },
+    "genres": [
+        "canadian pop",
+        "pop"
+    ],
+    "href": "https://api.spotify.com/v1/artists/1uNFoZAHBGtllmzznpCI3s",
+    "id": "1uNFoZAHBGtllmzznpCI3s",
+    "images": [
+        {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36",
+            "height": 640,
+            "width": 640
+        },
+        {
+            "url": "https://i.scdn.co/image/ab676161000051748ae7f2aaa9817a704a87ea36",
+            "height": 320,
+            "width": 320
+        },
+        {
+            "url": "https://i.scdn.co/image/ab6761610000f1788ae7f2aaa9817a704a87ea36",
+            "height": 160,
+            "width": 160
+        }
+    ],
+    "name": "Justin Bieber",
+    "popularity": 92,
+    "type": "artist",
+    "uri": "spotify:artist:1uNFoZAHBGtllmzznpCI3s"
+}
+*/
